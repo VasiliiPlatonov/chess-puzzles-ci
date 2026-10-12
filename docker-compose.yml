@@ -1,0 +1,26 @@
+# Развёртывание сервера Jenkins для CI/CD мобильного приложения.
+# Запуск:  docker compose up -d --build
+# Остановка: docker compose down
+services:
+  jenkins:
+    build:
+      context: ./jenkins
+    image: chess-puzzles-jenkins:2.568.3
+    container_name: jenkins
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"          # веб-интерфейс Jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home   # задания, сборки, кэши Gradle и pub
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "http://localhost:8080/login"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+volumes:
+  jenkins_home:
+    name: chess-puzzles-jenkins-home

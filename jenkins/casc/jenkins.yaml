@@ -1,0 +1,65 @@
+# =====================================================================
+# Конфигурация Jenkins как код (Jenkins Configuration as Code, JCasC).
+# Значения вида ${ИМЯ} подставляются из переменных окружения (файл .env).
+# =====================================================================
+jenkins:
+  systemMessage: "CI/CD-сервер мобильного приложения «Шахматные задачи». Настроен через JCasC."
+  numExecutors: 2
+  mode: NORMAL
+
+  # Учётные записи хранятся в самом Jenkins, самостоятельная регистрация запрещена.
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "${JENKINS_ADMIN_ID:-admin}"
+          password: "${JENKINS_ADMIN_PASSWORD}"
+
+  # Анонимный доступ запрещён, вошедшие пользователи имеют полные права.
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+  # Глобальные переменные окружения, доступные во всех сборках.
+  globalNodeProperties:
+    - envVars:
+        env:
+          - key: "TELEGRAM_CHAT_ID"
+            value: "${TELEGRAM_CHAT_ID:-}"
+
+unclassified:
+  location:
+    url: "http://localhost:8080/"
+
+# Секреты хранятся в хранилище учётных данных Jenkins, а не в коде.
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              scope: GLOBAL
+              id: "telegram-bot-token"
+              description: "Токен Telegram-бота для отправки APK тестировщикам"
+              secret: "${TELEGRAM_BOT_TOKEN:-none}"
+
+# Задание конвейера создаётся автоматически с помощью плагина Job DSL.
+jobs:
+  - script: |
+      pipelineJob('chess-puzzles') {
+        displayName('Шахматные задачи (Android)')
+        description('CI/CD мобильного приложения: анализ кода, тесты, сборка и доставка APK')
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote {
+                  url('${REPO_URL}')
+                }
+                branch('*/main')
+              }
+            }
+            scriptPath('Jenkinsfile')
+            lightweight(true)
+          }
+        }
+      }

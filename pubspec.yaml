@@ -1,0 +1,22 @@
+name: chess_puzzles
+description: "Мобильное приложение для решения шахматных задач."
+publish_to: 'none'
+
+# Версия приложения: 1.0.0 — versionName, +1 — versionCode.
+# В конвейере Jenkins versionCode подменяется номером сборки (--build-number).
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
