@@ -26,6 +26,57 @@ pipeline {
     stages {
         stage('Окружение') {
             steps {
+                sh '''
+                    mkdir -p ~/.gradle/init.d
+                    cat << 'EOF' > ~/.gradle/init.d/mirror.init.gradle
+gradle.allprojects { project ->
+    buildscript {
+        repositories {
+            all { ArtifactRepository repo ->
+                if (repo instanceof MavenArtifactRepository) {
+                    def url = repo.url.toString()
+                    if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
+                        repo.url = uri('https://maven.aliyun.com/repository/public')
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/public')
+                }
+            }
+        }
+    }
+}
+gradle.beforeSettings { settings ->
+    settings.pluginManagement.repositories {
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/public')
+                }
+            }
+        }
+    }
+    settings.dependencyResolutionManagement.repositories {
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/public')
+                }
+            }
+        }
+    }
+}
+EOF
+                '''
                 sh 'flutter --version'
                 sh 'flutter doctor -v'
             }
