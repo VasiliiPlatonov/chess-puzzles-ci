@@ -37,6 +37,10 @@ gradle.allprojects { project ->
                     def url = repo.url.toString()
                     if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
                         repo.url = uri('https://maven.aliyun.com/repository/public')
+                    } else if (url.contains('dl.google.com') || url.contains('maven.google.com')) {
+                        repo.url = uri('https://maven.aliyun.com/repository/google')
+                    } else if (url.contains('plugins.gradle.org')) {
+                        repo.url = uri('https://maven.aliyun.com/repository/gradle-plugin')
                     }
                 }
             }
@@ -48,6 +52,10 @@ gradle.allprojects { project ->
                 def url = repo.url.toString()
                 if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
                     repo.url = uri('https://maven.aliyun.com/repository/public')
+                } else if (url.contains('dl.google.com') || url.contains('maven.google.com')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/google')
+                } else if (url.contains('plugins.gradle.org')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/gradle-plugin')
                 }
             }
         }
@@ -60,6 +68,10 @@ gradle.beforeSettings { settings ->
                 def url = repo.url.toString()
                 if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
                     repo.url = uri('https://maven.aliyun.com/repository/public')
+                } else if (url.contains('dl.google.com') || url.contains('maven.google.com')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/google')
+                } else if (url.contains('plugins.gradle.org')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/gradle-plugin')
                 }
             }
         }
@@ -70,6 +82,10 @@ gradle.beforeSettings { settings ->
                 def url = repo.url.toString()
                 if (url.contains('repo.maven.apache.org') || url.contains('repo1.maven.org')) {
                     repo.url = uri('https://maven.aliyun.com/repository/public')
+                } else if (url.contains('dl.google.com') || url.contains('maven.google.com')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/google')
+                } else if (url.contains('plugins.gradle.org')) {
+                    repo.url = uri('https://maven.aliyun.com/repository/gradle-plugin')
                 }
             }
         }
