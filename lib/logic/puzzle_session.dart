@@ -69,7 +69,7 @@ class PuzzleSession {
       return MoveResult.solved;
     }
     if (move != puzzle.solution[_step]) {
-      _mistakes++;
+      _mistakes += 2;
       return MoveResult.wrong;
     }
 
