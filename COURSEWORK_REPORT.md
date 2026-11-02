@@ -19,7 +19,7 @@
 Платонов В.  
 
 **Руководитель работы:**  
-Преподаватель Советов П. Н.  
+Преподаватель Волков М. В.  
 
 <br><br><br>
 
@@ -267,8 +267,18 @@ pipelineJob('chess-puzzles') {
 
 ## СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ
 
-1. Документация Jenkins: Jenkins User Documentation. URL: https://www.jenkins.io/doc/
-2. Документация Jenkins Configuration as Code (JCasC). URL: https://github.com/jenkinsci/configuration-as-code-plugin
-3. Документация Flutter: Continuous integration & testing. URL: https://docs.flutter.dev/deployment/cd
-4. Документация Android Developers: Настройка сборки с помощью Gradle. URL: https://developer.android.com/build
-5. Docker Documentation: Docker Compose file reference. URL: https://docs.docker.com/compose/compose-file/
+1. Хамбл Дж., Фарли Д. Непрерывная доставка: автоматизация процессов сборки, тестирования и внедрения новых версий программного обеспечения. — М. : Вильямс, 2011. — 430 с.
+2. Фаулер М., Фоммил М. Непрерывная интеграция. Улучшение качества программного обеспечения и снижение риска. — М. : Вильямс, 2008. — 240 с.
+3. Ким Дж., Дебуа П., Уиллис Дж., Хамбл Дж. Руководство по DevOps. Как добиться гибкости, надежности и безопасности мирового уровня в технологических компаниях. — М. : Манн, Иванов и Фербер, 2018. — 512 с.
+4. Моррис К. Инфраструктура как код. Управление конфигурацией и развертыванием в облаке. — СПб. : Питер, 2019. — 416 с.
+5. Бентли Т. Jenkins 2. Приступаем к работе. — СПб. : БХВ-Петербург, 2018. — 304 с.
+6. ГОСТ 7.32-2017. Система стандартов по информации, библиотечному и издательскому делу. Отчет о научно-исследовательской работе. Структура и правила оформления. — Введ. 2018-07-01. — М. : Стандартинформ, 2018. — 28 с.
+7. ГОСТ Р ИСО/МЭК 12207-2010. Информационная технология. Системная и программная инженерия. Процессы жизненного цикла программных средств. — Введ. 2012-03-01. — М. : Стандартинформ, 2011. — 106 с.
+8. Jenkins User Documentation: Pipeline as Code, Declarative Pipeline syntax [Электронный ресурс]. — Режим доступа: https://www.jenkins.io/doc/book/pipeline/ (дата обращения: 25.10.2026).
+9. Jenkins Configuration as Code (JCasC) Plugin Reference [Электронный ресурс]. — Режим доступа: https://github.com/jenkinsci/configuration-as-code-plugin (дата обращения: 26.10.2026).
+10. Jenkins Job DSL API & Plugin Documentation [Электронный ресурс]. — Режим доступа: https://jenkinsci.github.io/job-dsl-plugin/ (дата обращения: 27.10.2026).
+11. Docker Engine & Compose Specification: Container orchestration reference [Электронный ресурс]. — Режим доступа: https://docs.docker.com/compose/compose-file/ (дата обращения: 28.10.2026).
+12. Flutter Documentation: Continuous integration and automated testing in Flutter [Электронный ресурс]. — Режим доступа: https://docs.flutter.dev/deployment/cd (дата обращения: 29.10.2026).
+13. Android Developers Guide: Configure your build with Gradle [Электронный ресурс]. — Режим доступа: https://developer.android.com/build (дата обращения: 30.10.2026).
+14. Gradle User Manual: Dependency resolution and repository mirrors [Электронный ресурс]. — Режим доступа: https://docs.gradle.org/current/userguide/userguide.html (дата обращения: 31.10.2026).
+15. Telegram Bot API: Methods and binary document delivery specification [Электронный ресурс]. — Режим доступа: https://core.telegram.org/bots/api (дата обращения: 01.11.2026).
