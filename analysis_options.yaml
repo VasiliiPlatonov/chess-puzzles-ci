@@ -1,0 +1,8 @@
+# Правила статического анализа кода.
+# Используется рекомендованный набор правил Flutter (пакет flutter_lints).
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**

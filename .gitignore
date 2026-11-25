@@ -1,0 +1,34 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+/dist/
+
+# IDE & OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+~$*.docx
+
+# Secrets (passwords and tokens)
+.env
+
+# Coursework documents and presentations (kept locally)
+Платонов_ИКБО-15-25_Курсовая_Работа/
+COURSEWORK_REPORT.*
+PRESENTATION.*
+*.pdf
+*.docx
+*.pptx
+
+# Local build tools and caches
+_build_tools/
+__pycache__/
+*.pyc
+*.tmp
+*.html

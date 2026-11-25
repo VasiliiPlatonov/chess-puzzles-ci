@@ -1,0 +1,60 @@
+# Манифест Jenkins Configuration as Code (JCasC)
+# ${JENKINS_ADMIN_ID} — переменная окружения сервиса;
+# ${jenkins_admin_password}, ${telegram_*} — Docker secrets из /run/secrets
+jenkins:
+  systemMessage: "Сборочный сервер мобильного приложения «Шахматные задачи» (ИКБО-15-25)"
+  numExecutors: 2
+  mode: NORMAL
+  scmCheckoutRetryCount: 3
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: "${JENKINS_ADMIN_ID}"
+          password: "${jenkins_admin_password}"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - string:
+              scope: GLOBAL
+              id: "telegram-bot-token"
+              description: "Токен Telegram-бота"
+              secret: "${telegram_bot_token}"
+          - string:
+              scope: GLOBAL
+              id: "telegram-chat-id"
+              description: "Идентификатор чата тестировщиков"
+              secret: "${telegram_chat_id}"
+
+unclassified:
+  location:
+    url: "http://jenkins.ci.local/"
+
+jobs:
+  - script: >
+      pipelineJob('chess-puzzles-ci') {
+        displayName('Шахматные задачи (Android)')
+        logRotator { numToKeep(20) }
+        properties {
+          pipelineTriggers {
+            triggers { pollSCM { scmpoll_spec('H/5 * * * *') } }
+          }
+        }
+        definition {
+          cpsScm {
+            scm {
+              git {
+                remote { url('https://github.com/VasiliiPlatonov/chess-puzzles-ci.git') }
+                branch('*/main')
+              }
+            }
+            scriptPath('Jenkinsfile')
+            lightweight(true)
+          }
+        }
+      }
